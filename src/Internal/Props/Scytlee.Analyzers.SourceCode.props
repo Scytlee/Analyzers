@@ -1,0 +1,44 @@
+<Project>
+    <PropertyGroup>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisMode>All</AnalysisMode>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+        <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <Nullable>enable</Nullable>
+        <WarningsAsErrors>nullable</WarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!--
+          # CA1014: Mark assemblies with CLSCompliantAttribute
+          https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1014
+        -->
+        <NoWarn>$(NoWarn);CA1014</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EditorConfigFileToCopy Include="$(MSBuildThisFileDirectory)..\content\Rules\.editorconfig"/>
+    </ItemGroup>
+    
+    <Target Name="CopyEditorConfig" BeforeTargets="BeforeBuild">
+        <Copy SourceFiles="@(EditorConfigFileToCopy)"
+              DestinationFolder="$(MSBuildProjectDirectory)"
+              SkipUnchangedFiles="true"
+              UseHardlinksIfPossible="false"/>
+    </Target>
+    
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="9.25.1.91650">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

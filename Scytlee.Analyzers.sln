@@ -1,8 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E7793C38-E99C-415F-9A83-9C32CFD44600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scytlee.Analyzers.SourceCode", "src\Scytlee.Analyzers.SourceCode\Scytlee.Analyzers.SourceCode.csproj", "{0199BD7D-7D18-46B8-B3C2-F11C78C0C107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scytlee.Analyzers.Tests", "src\Scytlee.Analyzers.Tests\Scytlee.Analyzers.Tests.csproj", "{7DE9C96C-5E5E-415C-8750-19E6B1E5EFA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0199BD7D-7D18-46B8-B3C2-F11C78C0C107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0199BD7D-7D18-46B8-B3C2-F11C78C0C107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0199BD7D-7D18-46B8-B3C2-F11C78C0C107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0199BD7D-7D18-46B8-B3C2-F11C78C0C107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DE9C96C-5E5E-415C-8750-19E6B1E5EFA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE9C96C-5E5E-415C-8750-19E6B1E5EFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE9C96C-5E5E-415C-8750-19E6B1E5EFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE9C96C-5E5E-415C-8750-19E6B1E5EFA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0199BD7D-7D18-46B8-B3C2-F11C78C0C107} = {E7793C38-E99C-415F-9A83-9C32CFD44600}
+		{7DE9C96C-5E5E-415C-8750-19E6B1E5EFA4} = {E7793C38-E99C-415F-9A83-9C32CFD44600}
 	EndGlobalSection
 EndGlobal
