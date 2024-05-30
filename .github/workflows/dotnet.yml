@@ -1,0 +1,23 @@
+name: .NET
+
+on:
+ workflow_dispatch:
+
+jobs:
+  release:
+    name: Release package to nuget.org
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/dotnet/sdk:8.0
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Pack
+      run: dotnet pack --no-build --configuration Release --output out
+    - name: Release
+      run: |
+        cd out
+        dotnet nuget push *.nupkg --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
