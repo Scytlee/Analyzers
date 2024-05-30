@@ -1,0 +1,20 @@
+name: Release SourceCode
+
+on: workflow_dispatch
+
+jobs:
+  release-src:
+    name: Release SourceCode
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/dotnet/sdk:8.0
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Pack
+      run: |
+        cd src/Scytlee.Analyzers.SourceCode
+        dotnet pack --configuration Release --output ../../out
+    - name: Release
+      run: |
+        cd out
+        dotnet nuget push *.nupkg --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
